@@ -33,7 +33,8 @@ spec:
         readinessProbe:  
           exec:
             command:
-            - "true"
+            - export BLOCKCT="999"
+            - if [ -z $BLOCKCT ]; then exit 0; else exit 1; fi
           initialDelaySeconds: 5
           periodSeconds: 10
         resources:
